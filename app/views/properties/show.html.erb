@@ -4,5 +4,8 @@
 <%= @property.price %>
 
 <%= link_to "Back", user_path(@user) %>
-<%= link_to "Edit", edit_user_property_path(@user, @property) %>
-<%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
+
+<% if current_user == User.find(params[:user_id]) %>
+|  <%= link_to "Edit", edit_user_property_path(@user, @property) %> |
+  <%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
+<% end %>
