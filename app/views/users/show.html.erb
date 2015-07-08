@@ -3,3 +3,16 @@
 
 
 <%= image_tag @user.avatar.url(:thumb) %>
+
+<%= link_to 'Add Property Listing', new_user_property_path(@user) %>
+
+<% if @user.properties.any? %>
+  <h1>Properties</h1>
+   <% @user.properties.each do |property| %>
+   <%= image_tag property.avatar.url(:thumb) %>
+
+      <%= property.address %>
+      <%= property.details %>
+      <%= property.price %>
+   <% end  %>
+<% end %>
