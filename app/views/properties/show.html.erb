@@ -5,3 +5,4 @@
 
 <%= link_to "Back", user_path(@user) %>
 <%= link_to "Edit", edit_user_property_path(@user, @property) %>
+<%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
