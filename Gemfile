@@ -11,6 +11,7 @@ gem 'pry'
 gem 'bootstrap-sass'
 gem 'bcrypt', require: "bcrypt"
 gem 'devise'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'byebug'

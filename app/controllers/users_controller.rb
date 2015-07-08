@@ -4,7 +4,7 @@ class UsersController < ActionController::Base
   end
 
   def show
-    
+
   end
 
   def new
@@ -26,6 +26,6 @@ class UsersController < ActionController::Base
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :remember_me, :username)
+    params.require(:user).permit(:email, :avatar, :password, :password_confirmation, :remember_me, :username)
   end
 end
