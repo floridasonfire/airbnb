@@ -3,6 +3,10 @@ class UsersController < ActionController::Base
   def index
   end
 
+  def show
+    
+  end
+
   def new
   end
 
@@ -11,6 +15,7 @@ class UsersController < ActionController::Base
   end
 
   def edit
+
   end
 
   def update
