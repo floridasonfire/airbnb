@@ -11,7 +11,7 @@
    <% @user.properties.each do |property| %>
    <%= image_tag property.avatar.url(:thumb) %>
 
-      <%= property.address %>
+      <%= link_to property.address, user_property_path(@user, property) %>
       <%= property.details %>
       <%= property.price %>
    <% end  %>

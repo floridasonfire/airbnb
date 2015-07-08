@@ -1,0 +1,7 @@
+<%= image_tag @property.avatar.url(:medium) %>
+<%= @property.address %>
+<%= @property.details %>
+<%= @property.price %>
+
+<%= link_to "Back", user_path(@user) %>
+<%= link_to "Edit", edit_user_property_path(@user, @property) %>

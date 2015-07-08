@@ -1,6 +1,12 @@
 class PropertiesController < ApplicationController
 
+  def show
+    @user = User.find(params[:user_id])
+    @property = Property.find(params[:id])
+  end
+
   def new
+    @user = User.find(params[:user_id])
     @property = Property.new
   end
 
@@ -12,6 +18,22 @@ class PropertiesController < ApplicationController
       redirect_to user_path(current_user)
     else
       render :new
+    end
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      flash[:notice] = "Your property has been updated."
+      redirect_to user_property_path(@user, @property)
+    else
+      render :edit
     end
   end
 
