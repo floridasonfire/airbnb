@@ -1,18 +1,22 @@
 <h1><%= @user.username %></h1>
-<h4><%= @user.email %></h4>
+<h4> Contact <%= @user.username %>: <%= @user.email %></h4>
 
 
 <%= image_tag @user.avatar.url(:thumb) %>
 
+<br>
+
 <%= link_to 'Add Property Listing', new_user_property_path(@user) %>
+
+<hr>
 
 <% if @user.properties.any? %>
   <h1>Properties</h1>
    <% @user.properties.each do |property| %>
    <%= image_tag property.avatar.url(:thumb) %>
 
-      <%= link_to property.address, user_property_path(@user, property) %>
-      <%= property.details %>
-      <%= property.price %>
+      <p>Address: <%= link_to property.address, user_property_path(@user, property) %></p>
+      <p>Additional information: <%= property.details %></p>
+      <p>Cost to rent: <%= property.price %></p>
    <% end  %>
 <% end %>
