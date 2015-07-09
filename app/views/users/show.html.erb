@@ -14,7 +14,7 @@
 
 <div class="col-sm-6">
   <% if @properties.any? %>
-      <h1>Properties</h1>
+      <h1>Properties <%= @user.username %> owns</h1>
        <% @properties.each do |property| %>
         <% if property.owner_id == @user.id %>
           <div class="col-sm-12">
@@ -27,4 +27,11 @@
       <% end %>
     <% end %>
   </div>
+</div>
+
+<div class="row">
+  <% @user.properties.each do |property| %>
+    <%= image_tag property.avatar.url(:medium) %><br />
+    <%= property.address %>
+  <% end %>
 </div>

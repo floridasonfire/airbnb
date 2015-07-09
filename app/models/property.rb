@@ -7,5 +7,5 @@ class Property < ActiveRecord::Base
   validates :price, :presence => true
   validates_attachment_presence :avatar
   has_and_belongs_to_many(:users)
-
+  
 end

@@ -14,3 +14,8 @@ users = User.create([
 {username:'BillyBob' , password:'billybob' , password_confirmation:'billybob' , email:'billybob@hillbilly.com'},
 
 ])
+
+properties = Property.create([
+{address:'2 fire ln.', price:'$70 per night', details:'This place rocks.', avatar_file_name: "house.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 5090, owner_id:1 }  
+
+])

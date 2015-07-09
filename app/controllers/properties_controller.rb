@@ -31,6 +31,10 @@ class PropertiesController < ApplicationController
     @user = User.find(params[:user_id])
     @property = Property.find(params[:id])
     if @property.update(property_params)
+      if current_user != @user
+        @property.users.push(current_user)
+      end
+
       flash[:notice] = "Your property has been updated."
       redirect_to user_property_path(@user, @property)
     else
@@ -51,7 +55,7 @@ class PropertiesController < ApplicationController
 
   private
   def property_params
-    params.require(:property).permit(:address, :avatar, :price, :details)
+    params.require(:property).permit(:address, :avatar, :price, :details, :available)
   end
 
 end

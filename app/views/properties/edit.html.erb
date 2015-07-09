@@ -1,10 +1,19 @@
 <% if current_user == @user %>
-
 <h1>Edit Property</h1>
-
 <%= render 'form' %>
 
 <% else %>
-<h5>Sorry! You can't edit this property!</h5>
-<%= link_to 'Back', user_property_path(@user, @property) %>
+  <% if @property.available %>
+    <h1>Rent <%= @property.address %></h1>
+    <%= image_tag @property.avatar.url(:medium), class: 'profile-image' %>
+    <%= form_for [@user, @property] do |f| %>
+      <%= f.label :available %><br />
+      <%= f.select :available, [['I want to rent this property', false]] %>
+      <%= f.submit "Rent Me!" %>
+    <% end %>
+    <%= link_to 'Back', user_property_path(@user, @property) %>
+  <% else %>
+    <h5>Sorry! This property is not available to rent! Check back soon</h5>
+    <%= link_to 'Back', user_property_path(@user, @property) %>
+  <% end %>
 <% end %>
