@@ -31,10 +31,6 @@ class PropertiesController < ApplicationController
     @user = User.find(params[:user_id])
     @property = Property.find(params[:id])
     if @property.update(property_params)
-      if current_user != @user
-        @property.users.push(current_user)
-      end
-
       flash[:notice] = "Your property has been updated."
       redirect_to user_property_path(@user, @property)
     else
@@ -51,6 +47,16 @@ class PropertiesController < ApplicationController
     else
       redirect_to '/'
     end
+  end
+
+  def toggle_availability
+    property = Property.find(params[:id])
+    property.toggle!(:available)
+    if property.available
+      property.users.push(current_user)
+    end
+    property.save
+    redirect_to '/'
   end
 
   private

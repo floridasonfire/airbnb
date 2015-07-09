@@ -2,9 +2,8 @@
   <%= link_to 'Add Property Listing', new_user_property_path(@user), class:'well' %>
 <% end %>
 
-
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     <h1><%= @user.username %></h1>
     <h4> Contact <%= @user.username %>: <%= @user.email %></h4>
     <%= image_tag @user.avatar.url(:medium) %><br />
@@ -12,9 +11,9 @@
   </div>
 
 
-<div class="col-sm-6">
+<div class="col-sm-4 properties">
   <% if @properties.any? %>
-      <h1>Properties <%= @user.username %> owns</h1>
+      <h3>Properties <%= @user.username %> owns</h3>
        <% @properties.each do |property| %>
         <% if property.owner_id == @user.id %>
           <div class="col-sm-12">
@@ -27,11 +26,12 @@
       <% end %>
     <% end %>
   </div>
-</div>
 
-<div class="row">
-  <% @user.properties.each do |property| %>
-    <%= image_tag property.avatar.url(:medium) %><br />
-    <%= property.address %>
-  <% end %>
+  <div class="col-sm-4 properties">
+    <h3>Properties <%= @user.username %> rented</h3>
+    <% @user.properties.each do |property| %>
+      <%= image_tag property.avatar.url(:thumb) %><br />
+      <%= property.address %><br /><br />
+    <% end %>
+  </div>
 </div>

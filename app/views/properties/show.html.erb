@@ -4,6 +4,10 @@
   |  <%= link_to "Edit", edit_user_property_path(@user, @property) %> |
   <%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
   | <%= link_to "Add photo", new_property_image_path(@property) %>
+  |
+  <% if @property.available == false %>
+    <%= link_to 'UNRENT ME!', toggle_availability_user_property_path(User.find(@property.owner_id), @property), class:'btn btn-danger' %>
+  <% end %>
   <% end %>
 </div>
 
@@ -14,7 +18,9 @@
     <%= image_tag @property.avatar.url(:medium), class: 'profile-image' %>
     <% if @property.available %>
     <br /><br />
-      <%= link_to 'RENT ME!', edit_user_property_path(User.find(@property.owner_id), @property), class:'btn btn-danger' %>
+      <% if current_user != @user %>
+        <%= link_to 'RENT ME!', toggle_availability_user_property_path(User.find(@property.owner_id), @property), class:'btn btn-danger' %>
+      <% end %>
     <% else %>
     <h4>This property is not available to rent, check back soon!</h4>
     <% end %>

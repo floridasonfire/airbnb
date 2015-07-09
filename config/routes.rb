@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get "/log-out" => "sessions#destroy", as: :log_out
 
   resources :users, :only => [:show, :index, :destroy] do
-    resources :properties
+    resources :properties do
+      member do
+        get "toggle_availability", to: "properties#toggle_availability"
+      end
+    end
   end
 
   resources :properties, :only => [:show] do
