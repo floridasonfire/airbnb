@@ -12,7 +12,8 @@ class PropertiesController < ApplicationController
 
   def create
     @user = current_user
-    @property = @user.properties.new(property_params)
+    @property = Property.new(property_params)
+    @property.owner_id = @user.id
     if @property.save
       flash[:notice] = "Your property has been added."
       redirect_to user_path(current_user)

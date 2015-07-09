@@ -13,16 +13,18 @@
 
 
 <div class="col-sm-6">
-  <% if @user.properties.any? %>
-    <h1>Properties</h1>
-     <% @user.properties.each do |property| %>
-     <div class="col-sm-12">
-        <%= image_tag property.avatar.url(:thumb) %>
-        <p>Address: <%= link_to property.address, user_property_path(@user, property) %></p>
-        <p>Additional information: <%= property.details %></p>
-        <p>Cost to rent: <%= property.price %></p>
-      </div>
-     <% end  %>
-  <% end %>
+  <% if @properties.any? %>
+      <h1>Properties</h1>
+       <% @properties.each do |property| %>
+        <% if property.owner_id == @user.id %>
+          <div class="col-sm-12">
+            <%= image_tag property.avatar.url(:thumb) %>
+            <p>Address: <%= link_to property.address, user_property_path(@user, property) %></p>
+            <p>Additional information: <%= property.details %></p>
+            <p>Cost to rent: <%= property.price %></p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>

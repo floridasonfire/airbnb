@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe User do
-  it {should have_many :properties}
-  
+  it {should have_and_belong_to_many :properties}
+
   it 'will have an admin column set to false' do
     user = FactoryGirl.create(:user)
     expect(user.admin).to eq(false)
