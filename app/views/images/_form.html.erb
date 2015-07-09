@@ -1,0 +1,7 @@
+<%= form_for [@property, @image] do |f| %>
+  <%= f.label :avatar %><br />
+  <%= f.file_field :avatar %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit %>
+<% end %>

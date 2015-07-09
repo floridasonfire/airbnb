@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get "/log-out" => "sessions#destroy", as: :log_out
 
   resources :users, :only => [:show] do
-    resources :properties
+    resources :properties, :only => [:new, :edit, :show]
+  end
+
+  resources :properties do
+    resources :images
   end
 end

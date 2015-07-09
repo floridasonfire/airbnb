@@ -1,11 +1,21 @@
+<div class="well">
+  <%= link_to "Back", user_path(@user) %>
+  <% if current_user == User.find(params[:user_id]) %>
+  |  <%= link_to "Edit", edit_user_property_path(@user, @property) %> |
+  <%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
+  | <%= link_to "Add photo", new_property_image_path(@property) %>
+  <% end %>
+</div>
+
+<br />
+
 <%= image_tag @property.avatar.url(:medium) %>
 <%= @property.address %>
 <%= @property.details %>
 <%= @property.price %>
 
-<%= link_to "Back", user_path(@user) %>
-
-<% if current_user == User.find(params[:user_id]) %>
-|  <%= link_to "Edit", edit_user_property_path(@user, @property) %> |
-  <%= link_to "Delete", user_property_path(@user, @property), data: {method: 'delete', confirm:'are you sure?'} %>
+<% @property.images.each do |image| %>
+  <%= image_tag image.avatar.url(:thumb) %>
+  <%= image.caption %>
 <% end %>
+<br />
