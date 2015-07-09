@@ -15,3 +15,22 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+   background-color:#399c9c;
+ }
+
+.row-margin{
+  margin-bottom:20px;
+}
+
+.caption{
+  font-style:italic;
+}
+
+.profile-image{
+  border:5px solid grey;
+  padding:5px;
+}
