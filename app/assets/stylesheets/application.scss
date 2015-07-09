@@ -19,7 +19,6 @@
  body {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
    font-weight: 300;
-   background-color:#399c9c;
  }
 
 .row-margin{
@@ -33,4 +32,12 @@
 .profile-image{
   border:5px solid grey;
   padding:5px;
+}
+
+.property-info{
+  word-wrap: break-word;
+  height:200px;
+  text-align:center;
+  overflow:scroll;
+
 }

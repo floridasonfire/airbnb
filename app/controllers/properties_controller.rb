@@ -41,7 +41,11 @@ class PropertiesController < ApplicationController
     @user = User.find(params[:user_id])
     @property = Property.find(params[:id])
     @property.destroy
-    redirect_to user_path(@user)
+    if @user == current_user
+      redirect_to user_path(@user)
+    else
+      redirect_to '/'
+    end
   end
 
   private
