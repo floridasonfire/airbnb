@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :properties, :only => [:show] do
     resources :images
   end
+
 end
