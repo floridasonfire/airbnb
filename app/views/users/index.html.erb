@@ -1,0 +1,11 @@
+<% users = @users.where(:admin => false) %>
+<% if users.any? %>
+  <% users.each do |user| %>
+    <%= link_to user.username, user_path(user) %>
+    <% if current_user.admin %>
+      <%= link_to "Delete User", user_path(user), data: {method: 'delete', confirm:'are you sure?'} %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>There are no users to delete.</p>
+<% end %>
